@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
+                  textStyle: ThemeText.mainButtonText,
                   fixedSize: const Size(150, 150),
-                  backgroundColor: Color.fromARGB(221, 2, 18, 200)))),
+                  backgroundColor: Color.fromARGB(221, 2, 18, 200),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25))))),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -74,14 +77,20 @@ class SecondScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    child: const Text('Campus Map'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => CampusMap()));
-                    },
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    CampusMap()));
+                      },
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Icon(ThemeText.map_outlined, size: 70),
+                            Text('Campus Map')
+                          ])),
                   ElevatedButton(
                     child: const Text('Parking'),
                     onPressed: () {
@@ -107,14 +116,20 @@ class SecondScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    child: const Text('Food'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Food()));
-                    },
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Food()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(ThemeText.local_restaurant_rounded, size: 77),
+                          Text('Food')
+                        ],
+                      )),
                   ElevatedButton(
                     child: const Text('Transportation'),
                     onPressed: () {
