@@ -4,6 +4,7 @@ import './transportation.dart';
 import './campusmap.dart';
 import './food.dart';
 import './hootloot.dart';
+import './styles.dart';
 
 // main function calls runApp() which takes a widget as argument
 // to create the layout
@@ -15,10 +16,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Splash Screen',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
+          primarySwatch: Colors.blue,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(150, 150),
+                  backgroundColor: Color.fromARGB(221, 2, 18, 200)))),
       home: MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
@@ -30,6 +33,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
+// start up screen
 class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
@@ -44,75 +48,92 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Container(
         color: Colors.white,
+        // change to Southern logo?
         child: FlutterLogo(size: MediaQuery.of(context).size.height));
   }
 }
 
+// main menu
 class SecondScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 0, 21, 255),
-          title: const Text(
-            'SCSU Resources',
-          ),
+          backgroundColor: Color.fromARGB(221, 2, 18, 200),
+          title: const Text('SCSU Resources', style: ThemeText.appBarText),
         ),
-        body: Center(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: const Text('Campus Map'),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(220, 70),
-                      backgroundColor: Color.fromARGB(255, 0, 21, 255)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => CampusMap()));
-                  },
-                ),
-                ElevatedButton(
-                  child: const Text('Transportation'),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(220, 70),
-                      backgroundColor: Color.fromARGB(255, 0, 21, 255)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                Transportation()));
-                  },
-                ),
-                ElevatedButton(
-                  child: const Text('Food & Dining'),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(220, 70),
-                      backgroundColor: Color.fromARGB(255, 0, 21, 255)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => Food()));
-                  },
-                ),
-                ElevatedButton(
-                  child: const Text('Hoot Loot'),
-                  style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(220, 70),
-                      backgroundColor: Color.fromARGB(255, 0, 21, 255)),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) => HootLoot()));
-                  },
-                ),
-              ]),
-        ));
+        body: Container(
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    child: const Text('Campus Map'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => CampusMap()));
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('Parking'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Parking()));
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('Hoot Loot'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => HootLoot()));
+                    },
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    child: const Text('Food'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Food()));
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('Transportation'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  Transportation()));
+                    },
+                  ),
+                  ElevatedButton(
+                    child: const Text('Other'),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => Other()));
+                    },
+                  )
+                ],
+              ),
+            ])));
   }
 }
