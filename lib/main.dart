@@ -4,6 +4,8 @@ import './transportation.dart';
 import './campusmap.dart';
 import './food.dart';
 import './hootloot.dart';
+import './parking.dart';
+import './other.dart';
 import './styles.dart';
 
 // main function calls runApp() which takes a widget as argument
