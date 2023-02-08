@@ -20,11 +20,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Color.fromARGB(246, 255, 255, 255),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                   textStyle: ThemeText.mainButtonText,
                   fixedSize: const Size(150, 150),
-                  backgroundColor: Color.fromARGB(221, 2, 18, 200),
+                  shadowColor: Color.fromARGB(221, 2, 18, 200),
+                  elevation: 10.0,
+                  backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25))))),
       home: MyHomePage(),
@@ -52,9 +55,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.white,
-        // change to Southern logo?
-        child: FlutterLogo(size: MediaQuery.of(context).size.height));
+      color: Colors.white,
+      child: new Image.asset('images/scsu_logo.jpg', width: 80.0, height: 80.0),
+    );
   }
 }
 
@@ -88,27 +91,42 @@ class SecondScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Icon(ThemeText.map_outlined, size: 70),
-                            Text('Campus Map')
+                            new Image.asset('images/map.png',
+                                width: 500.0, height: 80.0),
+                            Text('Campus Map', style: ThemeText.mainButtonText)
                           ])),
                   ElevatedButton(
-                    child: const Text('Parking'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Parking()));
-                    },
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Parking()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          new Image.asset('images/parking.png',
+                              width: 500.0, height: 80.0),
+                          Text('Parking', style: ThemeText.mainButtonText),
+                        ],
+                      )),
                   ElevatedButton(
-                    child: const Text('Hoot Loot'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => HootLoot()));
-                    },
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => HootLoot()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          new Image.asset('images/owl.png',
+                              width: 500.0, height: 80.0),
+                          Text('Hoot Loot', style: ThemeText.mainButtonText),
+                        ],
+                      )),
                 ],
               ),
               Column(
@@ -126,29 +144,45 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(ThemeText.local_restaurant_rounded, size: 77),
-                          Text('Food')
+                          new Image.asset('images/food.png',
+                              width: 500.0, height: 80.0),
+                          Text('Food & Dining', style: ThemeText.mainButtonText)
                         ],
                       )),
                   ElevatedButton(
-                    child: const Text('Transportation'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  Transportation()));
-                    },
-                  ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    Transportation()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          new Image.asset('images/bus.png',
+                              width: 500.0, height: 80.0),
+                          Text('Transportation',
+                              style: ThemeText.mainButtonText),
+                        ],
+                      )),
                   ElevatedButton(
-                    child: const Text('Other'),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => Other()));
-                    },
-                  )
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) => Other()));
+                      },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          new Image.asset('images/more.png',
+                              width: 500.0, height: 80.0),
+                          Text('Other', style: ThemeText.mainButtonText),
+                        ],
+                      ))
                 ],
               ),
             ])));
