@@ -1,8 +1,67 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+void setState(Null Function() param0) {}
 
 class Transportation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Transportation'),
+        ),
+        body: Center(
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Here is the link to the ',
+                  style: TextStyle(color: Colors.black),
+                ),
+                TextSpan(
+                  text: 'On-Campus shuttle service \n\n',
+                  style: TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      launch(
+                          'https://southernconnecticutstateuniversity.passiogo.com');
+                    },
+                ),
+                TextSpan(
+                  text: 'Here is the link to the ',
+                  style: TextStyle(color: Colors.black),
+                ),
+                TextSpan(
+                  text: 'Off-Campus transportation',
+                  style: TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      launch(
+                          'https://www.train-us.com/schedules/us-ct/cttransit-new-haven');
+                    },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    super.key,
+    required this.context,
+  });
+
+  final BuildContext context;
+
+  @override
+  Scaffold build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Transportation'),
