@@ -21,7 +21,7 @@ List<OnCampus> storeList = <OnCampus>[
       name: 'Connecticut Dining Hall',
       address:'Connecticut Hall',
       websiteUrl: 'https://southernct.sodexomyway.com/dining-near-me/resident-dining',
-      imageUrl: 'https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/306571354_391471446532093_4705850862094060843_n.png?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=OCaDR5ecINcAX_Cy05G&_nc_ht=scontent-lga3-1.xx&oh=00_AfBlXXCUg1FGh_QoZHE1xi46ERKw6a5PkBoFi0LgwkhkMQ&oe=63F86226',
+      imageUrl: 'https://www.southernct.edu/sites/default/files/2018-08/SCSU_Conn%20Hall_12-8944.jpg',
       hours: 'Monday-Friday: 7:30AM-9:00PM \n Saturday-Sunday: 10:00AM-9:00PM',
       description:"Connecticut Dining Hall is proud to offer a dining program complete with signature brands and menu selections that include just about every item you can imagine. Just feast your eyes on what we have available! Featuring a wide variety of fresh food designed to satisfy everyone's appetite with food choices to rival your favorite restaurants."
     ),
