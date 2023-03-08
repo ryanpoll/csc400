@@ -24,14 +24,12 @@ class Other extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                       fixedSize: const Size(220, 70),
                       backgroundColor: Color.fromARGB(221, 2, 18, 200)),
-                // brings back to home screen
                 onPressed: () => Navigator.pop(context)),
                 ElevatedButton(
                 child: const Text('Upcoming Events'),
                 style: ElevatedButton.styleFrom(
                       fixedSize: const Size(220, 70),
                       backgroundColor: Color.fromARGB(221, 2, 18, 200)),
-                // brings back to home screen
                 onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context)=>  TableBasicsExample()))),
             ElevatedButton(child: const Text('Academic Dates'),
