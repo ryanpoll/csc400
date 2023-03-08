@@ -17,12 +17,13 @@ class Transportation extends StatelessWidget {
           child: RichText(
             text: TextSpan(
               children: [
+                // ignore: prefer_const_constructors
                 TextSpan(
                   text: 'Here is the link to the ',
                   style: TextStyle(color: Colors.black),
                 ),
                 TextSpan(
-                  text: 'On-Campus shuttle service \n\n',
+                  text: 'On-Campus Shuttle Service \n\n',
                   style: TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
@@ -30,17 +31,31 @@ class Transportation extends StatelessWidget {
                           'https://southernconnecticutstateuniversity.passiogo.com');
                     },
                 ),
+                // ignore: prefer_const_constructors
                 TextSpan(
                   text: 'Here is the link to the ',
                   style: TextStyle(color: Colors.black),
                 ),
                 TextSpan(
-                  text: 'Off-Campus transportation',
+                  text: 'Off-Campus Live Bus Tracker \n\n\n\n',
                   style: TextStyle(color: Colors.blue),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       launch(
                           'https://www.train-us.com/schedules/us-ct/cttransit-new-haven');
+                    },
+                ),
+                TextSpan(
+                  text: 'Here is the link to ',
+                  style: TextStyle(color: Colors.black),
+                ),
+                TextSpan(
+                  text: 'Request a Upass',
+                  style: TextStyle(color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      launch(
+                          'https://hootloot.southernct.edu/benefits/upassrequest.php');
                     },
                 ),
               ],
