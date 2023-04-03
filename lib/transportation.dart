@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'styles.dart';
 
 void setState(Null Function() param0) {}
 
@@ -11,7 +12,12 @@ class Transportation extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Transportation'),
+          backgroundColor: Color.fromARGB(221, 2, 18, 200),
+          title: Text(
+            'Transportation',
+            style: ThemeText.otherAppBars,
+          ),
+          centerTitle: true,
         ),
         body: Center(
           child: RichText(
@@ -19,12 +25,17 @@ class Transportation extends StatelessWidget {
               children: [
                 // ignore: prefer_const_constructors
                 TextSpan(
-                  text: 'Here is the link to the ',
-                  style: TextStyle(color: Colors.black),
+                  text: 'Important Links \n\n\n',
+                  style: TextStyle(
+                      color: Color.fromARGB(221, 2, 18, 200),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 55,
+                      decoration: TextDecoration.underline),
                 ),
                 TextSpan(
                   text: 'On-Campus Shuttle Service \n\n',
-                  style: TextStyle(color: Colors.blue),
+                  style: TextStyle(
+                      color: Color.fromARGB(221, 2, 18, 200), fontSize: 30),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       launch(
@@ -32,30 +43,37 @@ class Transportation extends StatelessWidget {
                     },
                 ),
                 // ignore: prefer_const_constructors
+
                 TextSpan(
-                  text: 'Here is the link to the ',
-                  style: TextStyle(color: Colors.black),
-                ),
-                TextSpan(
-                  text: 'Off-Campus Live Bus Tracker \n\n\n\n',
-                  style: TextStyle(color: Colors.blue),
+                  text: 'Off-Campus Live Bus Tracker \n\n\n',
+                  style: TextStyle(
+                      color: Color.fromARGB(221, 2, 18, 200), fontSize: 30),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       launch(
                           'https://www.train-us.com/schedules/us-ct/cttransit-new-haven');
                     },
                 ),
+
                 TextSpan(
-                  text: 'Here is the link to ',
-                  style: TextStyle(color: Colors.black),
-                ),
-                TextSpan(
-                  text: 'Request a Upass',
-                  style: TextStyle(color: Colors.blue),
+                  text: 'Request a U-pass \n\n',
+                  style: TextStyle(
+                      color: Color.fromARGB(221, 2, 18, 200), fontSize: 30),
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
                       launch(
                           'https://hootloot.southernct.edu/benefits/upassrequest.php');
+                    },
+                ),
+
+                TextSpan(
+                  text: 'Register Your Car',
+                  style: TextStyle(
+                      color: Color.fromARGB(221, 2, 18, 200), fontSize: 30),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      launch(
+                          'https://forms.office.com/Pages/ResponsePage.aspx?id=Y2hzWA7WzkCVxgcjx-qvZ_Dg42_wrPNPmnMJbC2RUU5UMFpGNlJCR1laNFJYSTRJWkU2RkIxVkpOSC4u');
                     },
                 ),
               ],
