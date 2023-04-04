@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import './upcomingEvents.dart';
 import './academicDates.dart';
 import "styles.dart";
+import "residentinfo.dart";
 
 class Other extends StatelessWidget {
   static const String routeName = '/other';
@@ -40,7 +41,11 @@ class Other extends StatelessWidget {
                         backgroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25))),
-                    onPressed: () => Navigator.pop(context)),
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                ResidentInfo()))),
                 ElevatedButton(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
