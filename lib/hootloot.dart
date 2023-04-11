@@ -13,8 +13,13 @@ class HootLoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: ThemeText.mainColor,
-          title: const Text('Hoot Loot', style: ThemeText.otherAppBars),
+          title: Text('Hoot Loot',
+              style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600)),
         ),
         body: Center(
           child: Column(
