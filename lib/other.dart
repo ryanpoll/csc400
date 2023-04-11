@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import './upcomingEvents.dart';
 import './academicDates.dart';
 import "styles.dart";
@@ -13,8 +14,13 @@ class Other extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: ThemeText.mainColor,
-          title: const Text('Other Resources', style: ThemeText.otherAppBars),
+          title: Text('Other Resources',
+              style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600)),
         ),
         body: Center(
           child: Column(
