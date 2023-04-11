@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/parking.dart';
 import 'styles.dart';
 import 'on_campus.dart';
 import 'store_details_on.dart';
@@ -6,12 +7,18 @@ import 'store_details_on.dart';
 
 
 class HootLootOn extends StatelessWidget {
+  Icon customIcon = const Icon(Icons.search);
+  Widget customSearchBar = const Text('My Personal Journal');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('On Campus'),
+          backgroundColor: Color.fromARGB(221, 2, 18, 200),
+          centerTitle: true,
+          title: Text('On Campus', style: ThemeText.otherAppBars),
+          
         ),
+      
         body: ListView.builder(
             itemCount: storeList.length,
             itemBuilder: (context, index) {
@@ -19,7 +26,6 @@ class HootLootOn extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text(store.name),
-                  subtitle: Text(store.address.toString()),
                   leading: Image.network(store.imageUrl),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
