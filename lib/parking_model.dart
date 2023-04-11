@@ -1,5 +1,5 @@
-class FruitDataModel {
+class ParkingDataModel {
   final String name, garage, graph, desc;
 
-  FruitDataModel(this.name, this.garage, this.graph, this.desc);
+  ParkingDataModel(this.name, this.garage, this.graph, this.desc);
 }
