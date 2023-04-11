@@ -9,8 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class HootLootOn extends StatelessWidget {
-  Icon customIcon = const Icon(Icons.search);
-  Widget customSearchBar = const Text('My Personal Journal');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
