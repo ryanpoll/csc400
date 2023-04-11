@@ -1,77 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// void setState(Null Function() param0) {}
-
-// class Parking extends StatelessWidget {
-//   String? _selected;
-//   // ignore: prefer_final_fields
-//   List<Map> _myJson = [
-//     {
-//       'id': '1',
-//       'image': 'images/FitchStreetGarage.jpg',
-//       'name': 'Fitch Street Garage'
-//     },
-//     {
-//       'id': '2',
-//       'image': 'images/WestCampusGarage.png',
-//       'name': 'West Campus Garage'
-//     },
-//     {
-//       'id': '3',
-//       'image': 'images/WintergreenGarage.jpg',
-//       'name': 'Wintergreen Garage'
-//     }
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//         appBar: AppBar(title: const Text('Parking Options')),
-//         body: Center(
-//           child: Padding(
-//               padding: const EdgeInsets.only(left: 10, right: 10),
-//               child: Container(
-//                   padding: const EdgeInsets.only(left: 10, right: 10),
-//                   decoration: BoxDecoration(
-//                       border: Border.all(width: 1, color: Colors.blue),
-//                       borderRadius: BorderRadius.circular(10)),
-//                   child: Row(
-//                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                     children: [
-//                       Expanded(
-//                           child: DropdownButtonHideUnderline(
-//                               child: ButtonTheme(
-//                                   alignedDropdown: true,
-//                                   child: DropdownButton(
-//                                     hint: Text('Select Garage'),
-//                                     value: _selected,
-//                                     onChanged: (newValue) {
-//                                       setState(() {
-//                                         _selected = newValue;
-//                                       });
-//                                     },
-//                                     items: _myJson.map((garageItem) {
-//                                       return DropdownMenuItem(
-//                                           value: garageItem['id'].toString(),
-//                                           child: Row(children: [
-//                                             Image.asset(garageItem['image'],
-//                                                 width: 25),
-//                                             Container(
-//                                               margin: EdgeInsets.only(left: 10),
-//                                               child: Text(garageItem['name']),
-//                                             )
-//                                           ]));
-//                                     }).toList(),
-//                                   ))))
-//                     ],
-//                   ))
-//               // child: const Text('Back To Home Screen'),
-//               // // brings back to home screen
-//               // onPressed: () => Navigator.pop(context)),
-//               ),
-//         ));
-//   }
-// }
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
@@ -92,7 +18,7 @@ class Parking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Parking Page',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -117,27 +43,27 @@ class GraphScreen extends StatefulWidget {
 class _GraphScreenState extends State<GraphScreen> {
   final List<Feature> features = [
     Feature(
-      title: "Flutter",
+      title: "Wintergreen",
       color: Colors.blue,
       data: [0.3, 0.6, 0.8, 0.9, 1, 1.2],
     ),
     Feature(
-      title: "Kotlin",
+      title: "West Campus",
       color: Colors.black,
       data: [1, 0.8, 0.6, 0.7, 0.3, 0.1],
     ),
     Feature(
-      title: "Java",
+      title: "Fitch Street",
       color: Colors.orange,
       data: [0.4, 0.2, 0.9, 0.5, 0.6, 0.4],
     ),
     Feature(
-      title: "React Native",
+      title: "Lot 3",
       color: Colors.red,
       data: [0.5, 0.2, 0, 0.3, 1, 1.3],
     ),
     Feature(
-      title: "Swift",
+      title: "Lot 9",
       color: Colors.green,
       data: [0.25, 0.6, 1, 0.5, 0.8, 1, 4],
     ),
@@ -147,7 +73,7 @@ class _GraphScreenState extends State<GraphScreen> {
     return Scaffold(
       backgroundColor: Colors.white54,
       appBar: AppBar(
-        title: Text("Flutter Draw Graph Demo"),
+        title: Text("Parking Capacity Graph"),
         automaticallyImplyLeading: false,
       ),
       body: Column(
@@ -157,7 +83,7 @@ class _GraphScreenState extends State<GraphScreen> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 64.0),
             child: Text(
-              "Tasks Management",
+              "Parking",
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
@@ -183,12 +109,12 @@ class _GraphScreenState extends State<GraphScreen> {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static List<String> fruitname = [
-    'Wintergreen Garage',
-    'West Campus Garage',
-    'Fitch Street Garage',
-    'Parking Lot 3',
-    'Parking Lot 9'
+  static List<String> name = [
+    'Wintergreen Garage (North Campus)',
+    'West Campus Garage (West Campus)',
+    'Fitch Street Garage    (East Campus)',
+    'Parking Lot 3               (West Campus)',
+    'Parking Lot 9               (West Campus)'
   ];
 
   static List garage = [
@@ -215,16 +141,21 @@ class _MyHomePageState extends State<MyHomePage> {
     'Across from Barak Obama Elementary on Farnham Ave '
   ];
 
-  final List<FruitDataModel> Fruitdata = List.generate(
-      fruitname.length,
-      (index) => FruitDataModel('${fruitname[index]}', '${garage[index]}',
-          '${graph[index]}', 'Located at: ' '${address[index]}'));
+  final List<ParkingDataModel> parkingdata = List.generate(
+      name.length,
+      (index) => ParkingDataModel('${name[index]}', '${garage[index]}',
+          '${graph[index]}', 'Located: ' '${address[index]}'));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           backgroundColor: Color.fromARGB(221, 2, 18, 200),
+
           // leading: BackButton(onPressed: () => Navigator.pop(MyHomePage())),
           title: const Text(
             'Campus Parking Options',
@@ -232,56 +163,24 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         body: ListView.builder(
-            itemCount: Fruitdata.length,
+            itemCount: parkingdata.length,
             itemBuilder: (context, index) {
               return Card(
                 child: ListTile(
-                  title: Text(Fruitdata[index].name),
+                  title: Text(parkingdata[index].name),
                   leading: SizedBox(
-                    width: 50,
-                    height: 50,
-                    child: Image.network(Fruitdata[index].garage),
+                    width: 150,
+                    height: 150,
+                    child: Image.network(parkingdata[index].garage),
                   ),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => FruitDetail(
-                              fruitDataModel: Fruitdata[index],
+                        builder: (context) => ParkingDetail(
+                              parkingDataModel: parkingdata[index],
                             )));
                   },
                 ),
               );
             }));
   }
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return new MaterialApp(
-  //     home: new Scaffold(
-  //       appBar: new AppBar(
-  //         title: new Text('UrlLauchner'),
-  //       ),
-  //       body: new Center(
-  //         child: new RichText(
-  //           text: new TextSpan(
-  //             children: [
-  //               new TextSpan(
-  //                 text: 'This is no Link, ',
-  //                 style: new TextStyle(color: Colors.black),
-  //               ),
-  //               new TextSpan(
-  //                 text: 'but this is',
-  //                 style: new TextStyle(color: Colors.blue),
-  //                 recognizer: new TapGestureRecognizer()
-  //                   ..onTap = () {
-  //                     launch(
-  //                         'https://docs.flutter.io/flutter/services/UrlLauncher-class.html');
-  //                   },
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
 }
