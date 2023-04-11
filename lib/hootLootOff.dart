@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'styles.dart';
 import 'off_campus.dart';
 import 'store_details_off.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -10,7 +11,10 @@ class HootLootOff extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Off Campus'),
+          backgroundColor: Color.fromARGB(221, 2, 18, 200),
+          centerTitle: true,
+          title: Text('Off Campus', style: ThemeText.otherAppBars),
+          
         ),
         body: ListView.builder(
             itemCount: storeList.length,
@@ -19,7 +23,6 @@ class HootLootOff extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text(store.name),
-                  subtitle: Text(store.address.toString()),
                   leading: Image.network(store.imageUrl),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
@@ -32,4 +35,6 @@ class HootLootOff extends StatelessWidget {
               );
             }));
   }
+  
 }
+
