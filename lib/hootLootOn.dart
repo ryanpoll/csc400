@@ -3,6 +3,8 @@ import 'package:flutter_application_1/parking.dart';
 import 'styles.dart';
 import 'on_campus.dart';
 import 'store_details_on.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 
 
@@ -15,7 +17,10 @@ class HootLootOn extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(221, 2, 18, 200),
           centerTitle: true,
-          title: Text('On Campus', style: ThemeText.otherAppBars),
+          title: Text('On Campus', style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600)),
           
         ),
       
