@@ -4,10 +4,10 @@ import 'parking_model.dart';
 import 'package:draw_graph/draw_graph.dart';
 import 'package:draw_graph/models/feature.dart';
 
-class FruitDetail extends StatelessWidget {
-  final FruitDataModel fruitDataModel;
+class ParkingDetail extends StatelessWidget {
+  final ParkingDataModel parkingDataModel;
 
-  FruitDetail({Key? key, required this.fruitDataModel}) : super(key: key);
+  ParkingDetail({Key? key, required this.parkingDataModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,18 +15,18 @@ class FruitDetail extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           backgroundColor: Color.fromARGB(221, 2, 18, 200),
-          title: Text(fruitDataModel.name, style: ThemeText.otherAppBars),
+          title: Text(parkingDataModel.name, style: ThemeText.otherAppBars),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Image.network(fruitDataModel.garage),
-              Image.network(fruitDataModel.graph),
+              Image.network(parkingDataModel.garage),
+              Image.network(parkingDataModel.graph),
               const SizedBox(
                 height: 10,
               ),
               Text(
-                fruitDataModel.desc,
+                parkingDataModel.desc,
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
               )
@@ -42,7 +42,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     backgroundColor: Colors.white54,
     appBar: AppBar(
-      title: Text("Flutter Draw Graph Demo"),
+      title: Text("Parking Graph"),
       automaticallyImplyLeading: false,
     ),
     body: Column(
@@ -52,7 +52,7 @@ Widget build(BuildContext context) {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 64.0),
           child: Text(
-            "Tasks Management",
+            "Capacity",
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
