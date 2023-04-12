@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import './transportation.dart';
 import './campusmap.dart';
 import './food.dart';
@@ -13,33 +14,37 @@ import './styles.dart';
 // main function calls runApp() which takes a widget as argument
 // to create the layout
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Color.fromARGB(246, 255, 255, 255),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
                   textStyle: ThemeText.mainButtonText,
                   fixedSize: const Size(150, 150),
-                  shadowColor: Color.fromARGB(221, 2, 18, 200),
+                  shadowColor: const Color.fromARGB(221, 2, 18, 200),
                   elevation: 10.0,
                   backgroundColor: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(25))))),
-      home: MyHomePage(),
+      home: const MyHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key}) : super(key: key);
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -49,34 +54,41 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 3),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => SecondScreen())));
+        const Duration(seconds: 3),
+        () => Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => const SecondScreen())));
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: new Image.asset('images/scsu_logo.jpg', width: 80.0, height: 80.0),
+      child: Image.asset('images/scsu_logo.jpg', width: 80.0, height: 80.0),
     );
   }
 }
 
 // main menu
 class SecondScreen extends StatelessWidget {
+  const SecondScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(221, 2, 18, 200),
-          title: const Text('SCSU Resources', style: ThemeText.appBarText),
+          centerTitle: true,
+          backgroundColor: ThemeText.mainColor,
+          title: Text('SCSU Resources',
+              style: GoogleFonts.lato(
+                color: Colors.white,
+                fontSize: 29,
+                fontWeight: FontWeight.w600,
+              )),
         ),
-        body: Container(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+        body: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -87,15 +99,16 @@ class SecondScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
-                                    CampusMap()));
+                                    const CampusMap()));
                       },
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            new Image.asset('images/map.png',
+                            Image.asset('images/map.png',
                                 width: 500.0, height: 80.0),
-                            Text('Campus Map', style: ThemeText.mainButtonText)
+                            const Text('Campus Map',
+                                style: ThemeText.mainButtonText)
                           ])),
                   ElevatedButton(
                       onPressed: () {
@@ -108,9 +121,10 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          new Image.asset('images/parking.png',
+                          Image.asset('images/parking.png',
                               width: 500.0, height: 80.0),
-                          Text('Parking', style: ThemeText.mainButtonText),
+                          const Text('Parking',
+                              style: ThemeText.mainButtonText),
                         ],
                       )),
                   ElevatedButton(
@@ -124,9 +138,10 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          new Image.asset('images/owl.png',
+                          Image.asset('images/owl.png',
                               width: 500.0, height: 80.0),
-                          Text('Hoot Loot', style: ThemeText.mainButtonText),
+                          const Text('Hoot Loot',
+                              style: ThemeText.mainButtonText),
                         ],
                       )),
                 ],
@@ -146,9 +161,10 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          new Image.asset('images/food.png',
+                          Image.asset('images/food.png',
                               width: 500.0, height: 80.0),
-                          Text('Food & Dining', style: ThemeText.mainButtonText)
+                          const Text('Food & Dining',
+                              style: ThemeText.mainButtonText)
                         ],
                       )),
                   ElevatedButton(
@@ -163,9 +179,9 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          new Image.asset('images/bus.png',
+                          Image.asset('images/bus.png',
                               width: 500.0, height: 80.0),
-                          Text('Transportation',
+                          const Text('Transportation',
                               style: ThemeText.mainButtonText),
                         ],
                       )),
@@ -180,13 +196,13 @@ class SecondScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          new Image.asset('images/more.png',
+                          Image.asset('images/more.png',
                               width: 500.0, height: 80.0),
-                          Text('Other', style: ThemeText.mainButtonText),
+                          const Text('Other', style: ThemeText.mainButtonText),
                         ],
                       ))
                 ],
               ),
-            ])));
+            ]));
   }
 }
