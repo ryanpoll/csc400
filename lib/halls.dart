@@ -71,7 +71,7 @@ List<ResHalls> resList = <ResHalls>[
       address:'320 Fitch Street, New Haven, CT 06515',
       phone: '(203) 392-6120',
       websiteUrl: 'Link to visual tour: http://visual.southernct.edu/places/schwartz',
-      imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipOgoyx2s1jSjNa0iXAenp-FEfcKs09EYqwW8jh9=w1080-h608-p-no-v0',
+      imageUrl: 'http://visual.southernct.edu/www/albums/schwartz/thumbnails/Schwartz.jpg',
       description: "Schwartz Hall offers housing accommodations for upperclassmen in two- or four-person apartments. All apartments are furnished and feature carpeting, air conditioning, storage space, and full kitchens. A community lounge is available on the first floor, and several campus resources are located within the building: Office of Residence Life; Violence Prevention, Victim Advocacy and Support Center (VPAS); and Wellness Center. A full laundry room is available for residents' use in the basement. Students living in on-campus apartments with a kitchen are required to purchase a per-semester block meal plan."
     ),
     ResHalls(
@@ -79,7 +79,7 @@ List<ResHalls> resList = <ResHalls>[
       address:'116 Wintergreen Ave, New Haven, CT 06515',
       phone: '203-691-9064',
       websiteUrl: 'Link to visual tour: https://visual.southernct.edu/places/west',
-      imageUrl: 'https://lh3.googleusercontent.com/p/AF1QipOgoyx2s1jSjNa0iXAenp-FEfcKs09EYqwW8jh9=w1080-h608-p-no-v0',
+      imageUrl: 'http://visual.southernct.edu/www/albums/west/thumbnails/West12.jpg',
       description: 'The West Campus Residence Complex offers four-person, single bedroom suites as well as standard double-occupancy rooms with community bathrooms. All rooms are air conditioned. Residents have access to social and quiet study lounges, a computer lab, a video game room, a large laundry facility and kitchen area on the first floor, and recreation equipment.'
     ),
     ResHalls(
