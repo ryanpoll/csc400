@@ -13,7 +13,10 @@ class HootLootOff extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(221, 2, 18, 200),
           centerTitle: true,
-          title: Text('Off Campus', style: ThemeText.otherAppBars),
+          title: Text('Off Campus', style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600)),
           
         ),
         body: ListView.builder(
@@ -22,7 +25,7 @@ class HootLootOff extends StatelessWidget {
               OffCampus store = storeList[index];
               return Card(
                 child: ListTile(
-                  title: Text(store.name),
+                  title: Text(store.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black)),
                   leading: Image.network(store.imageUrl),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
