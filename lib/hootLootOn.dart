@@ -6,8 +6,6 @@ import 'store_details_on.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
-
-
 class HootLootOn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class HootLootOn extends StatelessWidget {
               OnCampus store = storeList[index];
               return Card(
                 child: ListTile(
-                  title: Text(store.name),
+                  title: Text(store.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black)),
                   leading: Image.network(store.imageUrl),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
