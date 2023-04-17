@@ -21,7 +21,7 @@ class ParkingDetail extends StatelessWidget {
           child: Column(
             children: [
               Image.network(parkingDataModel.garage),
-              Image.network(parkingDataModel.graph),
+              Image.asset(parkingDataModel.graph),
               const SizedBox(
                 height: 10,
               ),
