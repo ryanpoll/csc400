@@ -14,8 +14,13 @@ class ParkingDetail extends StatelessWidget {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(221, 2, 18, 200),
+          backgroundColor: ThemeText.mainColor,
           title: Text(parkingDataModel.name, style: ThemeText.otherAppBars),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -23,7 +28,8 @@ class ParkingDetail extends StatelessWidget {
               Image.network(parkingDataModel.garage),
               Image.asset(parkingDataModel.graph),
               const SizedBox(
-                height: 10,
+                height: 25,
+                width: 25,
               ),
               Text(
                 parkingDataModel.desc,
