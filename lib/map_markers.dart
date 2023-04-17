@@ -1,3 +1,5 @@
+// this file holds all map markers for the campus map
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapMarker {
@@ -9,6 +11,36 @@ class MapMarker {
       {required this.markerId,
       required this.position,
       required this.infoWindow});
+
+// this function returns the full name of location that is searched
+  static String? getMarker(String name) {
+    for (MapMarker marker in schoolMarkers) {
+      if (marker.infoWindow.contains(name)) {
+        return marker.infoWindow;
+      }
+    }
+    for (MapMarker marker in parkingMarkers) {
+      if (marker.infoWindow.contains(name)) {
+        return marker.infoWindow;
+      }
+    }
+    for (MapMarker marker in sportsMarkers) {
+      if (marker.infoWindow.contains(name)) {
+        return marker.infoWindow;
+      }
+    }
+    for (MapMarker marker in diningMarkers) {
+      if (marker.infoWindow.contains(name)) {
+        return marker.infoWindow;
+      }
+    }
+    for (MapMarker marker in hallMarkers) {
+      if (marker.infoWindow.contains(name)) {
+        return marker.infoWindow;
+      }
+    }
+    return null;
+  }
 
 // markers for academic buildings
   static const schoolMarkers = <MapMarker>[
@@ -64,6 +96,10 @@ class MapMarker {
         markerId: MarkerId('health human services'),
         position: LatLng(41.33513, -72.94478),
         infoWindow: 'Health and Human Services Building'),
+    MapMarker(
+        markerId: MarkerId('ethmic heritage'),
+        position: LatLng(41.33025, -72.95085),
+        infoWindow: 'Ethnic Heritage Center'),
   ];
 
 // markers for parking garages
@@ -218,11 +254,99 @@ class MapMarker {
         infoWindow: 'Schwartz Hall'),
   ];
 
-// markers for phones
+// markers for residence halls
   static const phoneMarkers = <MapMarker>[
     MapMarker(
         markerId: MarkerId('p1'),
         position: LatLng(41.33389, -72.95069),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p2'),
+        position: LatLng(41.33539, -72.94993),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p3'),
+        position: LatLng(41.33618, -72.94802),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p4'),
+        position: LatLng(41.33685, -72.94845),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p5'),
+        position: LatLng(41.33736, -72.94763),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p6'),
+        position: LatLng(41.33780, -72.94764),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p7'),
+        position: LatLng(41.33774, -72.94711),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p8'),
+        position: LatLng(41.33827, -72.94700),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p9'),
+        position: LatLng(41.33842, -72.94783),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p10'),
+        position: LatLng(41.33877, -72.94815),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p11'),
+        position: LatLng(41.33540, -72.95201),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p12'),
+        position: LatLng(41.33601, -72.95302),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p13'),
+        position: LatLng(41.33547, -72.95431),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p14'),
+        position: LatLng(41.33402, -72.95369),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p15'),
+        position: LatLng(41.33348, -72.95315),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p16'),
+        position: LatLng(41.33290, -72.95358),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p17'),
+        position: LatLng(41.33337, -72.95275),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p18'),
+        position: LatLng(41.33267, -72.95207),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p19'),
+        position: LatLng(41.33258, -72.95286),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p20'),
+        position: LatLng(41.33104, -72.95333),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p21'),
+        position: LatLng(41.33148, -72.95404),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p22'),
+        position: LatLng(41.32999, -72.95076),
+        infoWindow: 'Emergency Phone'),
+    MapMarker(
+        markerId: MarkerId('p23'),
+        position: LatLng(41.32973, -72.95345),
         infoWindow: 'Emergency Phone'),
   ];
 }
