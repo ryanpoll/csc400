@@ -1,7 +1,8 @@
-// ignore: import_of_legacy_library_into_null_safe
+// ignore_for_file: import_of_legacy_library_into_null_safe, prefer_const_constructors
+import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import './styles.dart';
+import 'styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'map_markers.dart';
@@ -15,8 +16,6 @@ class CampusMap extends StatefulWidget {
 }
 
 class _MapScreenState extends State<CampusMap> {
-  set markers(List<Marker> markers) {}
-
   @override
   void dispose() {
     _googleMapController.dispose();
@@ -32,7 +31,7 @@ class _MapScreenState extends State<CampusMap> {
   final MapType _currentMapType = MapType.satellite;
 
   Set<Marker> _markers = {};
-
+  // the default info text for all markers
   final _snippet = "Tap here to get directions";
 
   @override
@@ -40,6 +39,7 @@ class _MapScreenState extends State<CampusMap> {
     super.initState();
   }
 
+  // sets all filter checkboxes to initially checked off
   bool checkedAcademic = true;
   bool checkedShuttle = true;
   bool checkedDining = true;
@@ -49,6 +49,11 @@ class _MapScreenState extends State<CampusMap> {
   bool checkedHall = true;
   bool checkedPhones = true;
 
+  late BuildContext mainContext;
+
+  final TextEditingController searchController = TextEditingController();
+  List<String> listOfMarkers = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +61,122 @@ class _MapScreenState extends State<CampusMap> {
             backgroundColor: ThemeText.mainColor,
             title: const Text('Campus Map', style: ThemeText.otherAppBars),
             actions: [
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: () {
+                  bool searchSubmitted = false;
+                  List<String> searchedMarkers = [];
+                  mainContext = context;
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return FocusScope(
+                          autofocus: true,
+                          child: Container(
+                            height: 300.0,
+                            child: Column(
+                              children: [
+                                TextField(
+                                  style: GoogleFonts.lato(
+                                      fontSize: 17,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                  controller: searchController,
+                                  onSubmitted: (value) {
+                                    // Update the searched markers list based on the search query
+                                    setState(() {
+                                      searchSubmitted = true;
+                                      searchedMarkers = listOfMarkers
+                                          .where((name) => name
+                                              .toLowerCase()
+                                              .contains(value.toLowerCase()))
+                                          .toList();
+                                    });
+                                  },
+                                  decoration: InputDecoration(
+                                    hintText: 'Enter name of location',
+                                    hintStyle: GoogleFonts.lato(
+                                      color: Colors.black,
+                                      fontSize: 17,
+                                    ),
+                                    prefixIcon: Icon(
+                                      Icons.search,
+                                      color: ThemeText.mainColor,
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: (searchedMarkers.isEmpty &&
+                                          searchSubmitted)
+                                      ? Center(
+                                          child: Text("No results found.",
+                                              style: GoogleFonts.lato(
+                                                  color: Colors.black,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.w600)),
+                                        )
+                                      : GestureDetector(
+                                          onTap: (() =>
+                                              Navigator.of(context).pop()),
+                                          child: ListView.builder(
+                                            itemCount: searchedMarkers.length,
+                                            itemBuilder: (context, index) {
+                                              return ListTile(
+                                                  title: Text(
+                                                      searchedMarkers[index],
+                                                      style: GoogleFonts.lato(
+                                                          color: Colors.black,
+                                                          fontSize: 17,
+                                                          fontWeight:
+                                                              FontWeight.w600)),
+                                                  onTap: () {
+                                                    // gets the full name of the location
+                                                    String? fullMarkerName =
+                                                        MapMarker.getMarker(
+                                                            searchedMarkers[
+                                                                index]);
+                                                    // gets the marker object of the selected marker
+                                                    Marker? selectedMarker =
+                                                        findMarker(
+                                                            fullMarkerName);
+                                                    if (selectedMarker !=
+                                                        null) {
+                                                      // brings user back to view of map
+
+                                                      // shows info window for the marker
+                                                      _googleMapController
+                                                          .showMarkerInfoWindow(
+                                                              selectedMarker
+                                                                  .markerId);
+                                                      // hovers camera over the marker
+                                                      _googleMapController
+                                                          .animateCamera(
+                                                        CameraUpdate
+                                                            .newCameraPosition(
+                                                          CameraPosition(
+                                                              target:
+                                                                  selectedMarker
+                                                                      .position,
+                                                              zoom: 18.0),
+                                                        ),
+                                                      );
+                                                      Navigator.of(mainContext)
+                                                          .pop();
+                                                    }
+                                                  });
+                                            },
+                                          ),
+                                        ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }).whenComplete(() {
+                    FocusScope.of(context).unfocus();
+                  });
+                },
+              ),
               Builder(builder: (context) {
                 return TextButton(
                     onPressed: () {
@@ -68,7 +189,7 @@ class _MapScreenState extends State<CampusMap> {
               })
             ]),
         endDrawer: Drawer(
-            width: 260,
+            width: 290,
             child: Container(
                 height: 150,
                 color: Colors.white,
@@ -89,8 +210,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/school_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Academic Buildings',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Academic Buildings',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -105,8 +231,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/shuttle_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Shuttle Bus Stops',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Shuttle Bus Stops',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -121,8 +252,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/dining_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Food & Dining',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Food & Dining',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -137,8 +273,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/parking_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Parking Garages',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Parking Garages',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -153,8 +294,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/bus_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Municipal Bus Stops',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Municipal Bus Stops',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -169,8 +315,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/sports_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Sports Facilities',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Sports Facilities',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -185,8 +336,13 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/dorm_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Residance Halls',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Residance Halls',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
@@ -201,21 +357,26 @@ class _MapScreenState extends State<CampusMap> {
                             }),
                         Image.asset('images/phone_marker.png',
                             width: 36.0, height: 36.0),
-                        const Text('Emergency Phones',
-                            style: ThemeText.mapKeyText),
+                        const Text(" "),
+                        Text('Emergency Phones',
+                            style: GoogleFonts.lato(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                letterSpacing: 0.5)),
                       ],
                     ),
                     Row(
                       children: const [Text(" ")],
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         const Text(" "),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               textStyle: ThemeText.mainButtonText,
-                              fixedSize: const Size(100, 40),
+                              fixedSize: const Size(125, 40),
                               shadowColor: ThemeText.mainColor,
                               elevation: 5.0,
                               backgroundColor: ThemeText.mainColor,
@@ -223,15 +384,15 @@ class _MapScreenState extends State<CampusMap> {
                                   borderRadius: BorderRadius.circular(25))),
                           onPressed: () {
                             setState(() {
-                              filterMarkers();
+                              checkAllMarkers();
                             });
                           },
-                          child: const Text("Apply"),
+                          child: const Text("Check All"),
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               textStyle: ThemeText.mainButtonText,
-                              fixedSize: const Size(100, 40),
+                              fixedSize: const Size(125, 40),
                               shadowColor: ThemeText.mainColor,
                               elevation: 5.0,
                               backgroundColor: ThemeText.mainColor,
@@ -239,13 +400,40 @@ class _MapScreenState extends State<CampusMap> {
                                   borderRadius: BorderRadius.circular(25))),
                           onPressed: () {
                             setState(() {
-                              resetMarkers();
+                              uncheckAllMarkers();
                             });
                           },
-                          child: const Text("Reset"),
+                          child: const Text("Uncheck All"),
                         )
                       ],
                     ),
+                    Column(
+                      children: [
+                        Text(" "),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  textStyle: ThemeText.mainButtonText,
+                                  fixedSize: const Size(110, 50),
+                                  shadowColor: ThemeText.mainColor,
+                                  elevation: 5.0,
+                                  backgroundColor: ThemeText.mainColor,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(25))),
+                              onPressed: () {
+                                setState(() {
+                                  filterMarkers();
+                                  Navigator.pop(context);
+                                });
+                              },
+                              child: const Text("Apply"),
+                            )
+                          ],
+                        ),
+                      ],
+                    )
                   ],
                 ))),
         body: GoogleMap(
@@ -255,6 +443,7 @@ class _MapScreenState extends State<CampusMap> {
           mapToolbarEnabled: false,
           mapType: _currentMapType,
           zoomControlsEnabled: true,
+          // bounds the scope of the map to stay within area of SCSU
           cameraTargetBounds: CameraTargetBounds(LatLngBounds(
               northeast: const LatLng(41.33800, -72.92543),
               southwest: const LatLng(41.32664, -72.97003))),
@@ -371,13 +560,13 @@ class _MapScreenState extends State<CampusMap> {
           onPressed: () => _googleMapController.animateCamera(
             CameraUpdate.newCameraPosition(_initialCameraPosition),
           ),
-
           child: const Icon(Icons.center_focus_strong),
         ),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.centerDocked);
   }
 
+  // adds all the map markers to the map
   addAllMarkers() {
     addSchoolMarkers();
     addParkingMarkers();
@@ -387,12 +576,45 @@ class _MapScreenState extends State<CampusMap> {
     addDiningMarkers();
     addHallMarkers();
     addPhoneMarkers();
+    createList();
   }
 
+// goes through all marker objects and creates a list of strings
+// with just the name of the location
+  void createList() {
+    for (var m in MapMarker.schoolMarkers) {
+      listOfMarkers.add(m.infoWindow.toString());
+    }
+    for (var m in MapMarker.parkingMarkers) {
+      listOfMarkers.add(m.infoWindow.toString());
+    }
+    for (var m in MapMarker.sportsMarkers) {
+      listOfMarkers.add(m.infoWindow.toString());
+    }
+    for (var m in MapMarker.diningMarkers) {
+      listOfMarkers.add(m.infoWindow.toString());
+    }
+    for (var m in MapMarker.hallMarkers) {
+      listOfMarkers.add(m.infoWindow.toString());
+    }
+  }
+
+// returns the marker objects of the tapped search result
+  Marker? findMarker(String? name) {
+    for (Marker m in _markers) {
+      if (m.infoWindow.title == name) {
+        return m;
+      }
+    }
+    return null; // If no marker with the given name is found
+  }
+
+  // when map marker is pressed, redirects user to google maps with coordinates
   getDirections(var lat, var long) {
     launch('http://www.google.com/maps/place/$lat,$long');
   }
 
+  // adds the academic building markers to map
   addSchoolMarkers() async {
     BitmapDescriptor schoolMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/school_marker.png');
@@ -400,6 +622,7 @@ class _MapScreenState extends State<CampusMap> {
       _markers.add(Marker(
         markerId: m.markerId,
         position: m.position,
+        onTap: (() {}),
         infoWindow: InfoWindow(
             title: m.infoWindow,
             snippet: _snippet,
@@ -411,6 +634,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the parking markers to map
   addParkingMarkers() async {
     BitmapDescriptor parkingMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/parking_marker.png');
@@ -430,6 +654,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the sport facility markers to map
   addSportsMarkers() async {
     BitmapDescriptor sportsMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/sports_marker.png');
@@ -448,6 +673,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the shuttle bus markers to map
   addShuttleMarkers() async {
     BitmapDescriptor shuttleMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/shuttle_marker.png');
@@ -467,6 +693,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the dining hall markers to the map
   addDiningMarkers() async {
     BitmapDescriptor diningMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/dining_marker.png');
@@ -486,6 +713,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the municipal bus markers to the map
   addBusMarkers() async {
     BitmapDescriptor busMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/bus_marker.png');
@@ -505,6 +733,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the residance hall markers to the map
   addHallMarkers() async {
     BitmapDescriptor hallMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/dorm_marker.png');
@@ -524,6 +753,7 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
+  // adds the emergency phone markers to the map
   addPhoneMarkers() async {
     BitmapDescriptor phoneMarkerIcon = await BitmapDescriptor.fromAssetImage(
         const ImageConfiguration(), 'images/phone_marker.png');
@@ -543,7 +773,8 @@ class _MapScreenState extends State<CampusMap> {
     }
   }
 
-  resetMarkers() {
+  // when check all button is pressed, sets all checkboxes to checked
+  checkAllMarkers() {
     checkedAcademic = true;
     checkedShuttle = true;
     checkedDining = true;
@@ -554,6 +785,20 @@ class _MapScreenState extends State<CampusMap> {
     checkedPhones = true;
   }
 
+  // when uncheck all button is pressed, sets all checkboxes to checked
+  uncheckAllMarkers() {
+    checkedAcademic = false;
+    checkedShuttle = false;
+    checkedDining = false;
+    checkedParking = false;
+    checkedBus = false;
+    checkedSports = false;
+    checkedHall = false;
+    checkedPhones = false;
+  }
+
+  // when apply filters button is pressed, removes all markers and
+  // checks to see which checkboxes are checked, then adds the markers accordingly
   filterMarkers() {
     setState(() {
       _markers = {};
@@ -582,5 +827,15 @@ class _MapScreenState extends State<CampusMap> {
     if (checkedPhones == true) {
       addPhoneMarkers();
     }
+  }
+
+  void onMarkerTapped(Marker marker) async {
+    // Get the position of the tapped marker
+    LatLng tappedMarkerPosition = marker.position;
+    // Animate the camera to focus on the tapped marker
+    await _googleMapController
+        .animateCamera(CameraUpdate.newLatLng(tappedMarkerPosition));
+    // Explicitly show the info window for the tapped marker
+    await _googleMapController.showMarkerInfoWindow(marker.markerId);
   }
 }
