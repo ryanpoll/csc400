@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'styles.dart';
 import 'halls.dart';
 import 'foodPlacesInfo.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -16,7 +17,10 @@ class FoodDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(221, 2, 18, 200),
         centerTitle: true,
-        title: Text(food.name),
+        title: Text(food.name, style: GoogleFonts.lato(
+                  color: Colors.white,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w600)),
       ),
       body: Padding(
         padding: const EdgeInsets.all(0.0),
@@ -33,8 +37,7 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.address.toString(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold,
-                          fontFamily: 'RedHatDisplay'),
+                  style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.bold ,wordSpacing: 1, color: Colors.black),
                 ),
               ),  
                const Divider(
@@ -49,7 +52,7 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.phone.toString(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 17.0, fontStyle: FontStyle.italic),
+                  style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black),
                 ),
               ),
                const Divider(
@@ -64,7 +67,7 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.menu.toString(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 17.0, fontStyle: FontStyle.italic),
+                  style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black),
                 ),
               ),
               const Divider(
@@ -79,7 +82,7 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.hours.toString(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 17.0, fontStyle: FontStyle.italic),
+                  style: GoogleFonts.lato(fontSize: 17, wordSpacing: 2, color: Colors.black, fontStyle:  FontStyle.italic),
                 ),
               ), 
               const Divider(
@@ -90,11 +93,11 @@ class FoodDetails extends StatelessWidget {
                 endIndent: 0,
               ),
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(7.0),
                 child: Text(
                   food.description,
                   textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 18.0),
+                  style: GoogleFonts.lato(fontSize: 18, wordSpacing: 1, color: Colors.black),
                 ),
               ),
               const Divider(
@@ -109,7 +112,7 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.foodOffered,
                   textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 18.0),
+                  style: GoogleFonts.lato(fontSize: 18, wordSpacing: 1, color: Colors.black),
                 ),
               ),
               
