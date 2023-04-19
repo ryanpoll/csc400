@@ -1,7 +1,13 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'styles.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'parking_model.dart';
 import 'parking_details.dart';
+import 'package:draw_graph/draw_graph.dart';
+import 'package:draw_graph/models/feature.dart';
+import 'package:flutter/material.dart';
 
 class Parking extends StatefulWidget {
   const Parking({super.key});
@@ -14,7 +20,7 @@ class _MyHomePageState extends State<Parking> {
   static List<String> name = [
     'Wintergreen Garage \n(North Campus)',
     'West Campus Garage \n(West Campus)',
-    'Fitch Street Garage  \n(East Campus)',
+    'Fitch Street Garage \n(East Campus)',
     'Parking Lot 3  \n(West Campus)',
     'Parking Lot 9  \n(West Campus)'
   ];
@@ -63,7 +69,7 @@ class _MyHomePageState extends State<Parking> {
               child: Container(
                   child: const Padding(
                 padding: EdgeInsets.all(20.0),
-                child: Text("Campus Parking",
+                child: Text("Student Parking",
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
@@ -71,23 +77,39 @@ class _MyHomePageState extends State<Parking> {
               )),
             )),
         body: ListView.builder(
-            padding: EdgeInsets.fromLTRB(10, 50, 10, 25),
+            padding: EdgeInsets.fromLTRB(10, 20, 10, 25),
             itemCount: parkingdata.length,
             itemBuilder: (context, index) {
-              return Card(
-                child: ListTile(
-                  title: Text(parkingdata[index].name),
-                  leading: SizedBox(
-                    width: 160,
-                    height: 150,
-                    child: Image.network(parkingdata[index].garage),
-                  ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
+              return Container(
+                margin: EdgeInsets.symmetric(vertical: 15),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 1.0),
+                  borderRadius: BorderRadius.circular(10.0), // Add this line
+                ),
+                child: Card(
+                  child: ListTile(
+                    title: Text(
+                      parkingdata[index].name,
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    leading: SizedBox(
+                      width: 100,
+                      height: 150,
+                      child: Image.network(
+                        parkingdata[index].garage,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => ParkingDetail(
-                              parkingDataModel: parkingdata[index],
-                            )));
-                  },
+                          parkingDataModel: parkingdata[index],
+                        ),
+                      ));
+                    },
+                  ),
                 ),
               );
             }));
