@@ -24,6 +24,7 @@ class Food extends StatelessWidget {
               return Card(
                 child: ListTile(
                   title: Text(food.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black)),
+                  trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
                     Navigator.push(
                         context,
