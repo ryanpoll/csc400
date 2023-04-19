@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'styles.dart';
 import 'halls.dart';
 import 'foodPlacesInfo.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-
 
 class FoodDetails extends StatelessWidget {
   final FoodLocations food;
@@ -17,10 +16,7 @@ class FoodDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(221, 2, 18, 200),
         centerTitle: true,
-        title: Text(food.name, style: GoogleFonts.lato(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600)),
+        title: Text(food.name),
       ),
       body: Padding(
         padding: const EdgeInsets.all(0.0),
@@ -37,25 +33,29 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.address.toString(),
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.bold ,wordSpacing: 1, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'RedHatDisplay'),
                 ),
-              ),  
-               const Divider(
+              ),
+              const Divider(
                 color: Color.fromARGB(255, 212, 209, 209),
                 height: 2.5,
                 thickness: 0.5,
                 indent: 0,
                 endIndent: 0,
-              ),            
+              ),
               Padding(
                 padding: const EdgeInsets.all(6.0),
                 child: Text(
                   food.phone.toString(),
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black),
+                  style: GoogleFonts.lato(
+                      fontSize: 17.0, fontStyle: FontStyle.italic),
                 ),
               ),
-               const Divider(
+              const Divider(
                 color: Color.fromARGB(255, 212, 209, 209),
                 height: 2.5,
                 thickness: 0.5,
@@ -64,11 +64,25 @@ class FoodDetails extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(6.0),
-                child: Text(
-                  food.menu.toString(),
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black),
-                ),
+                child: InkWell(
+                    onTap: () {
+                      if (food.directions == false) {
+                        launch(food.menuURL.toString());
+                      } else {
+                        var lat = food.location.latitude;
+                        var long = food.location.longitude;
+                        launch('http://www.google.com/maps/place/$lat,$long');
+                      }
+                    },
+                    child: Container(
+                      height: 20,
+                      alignment: Alignment.center,
+                      child: Text(food.text.toString(),
+                          style: GoogleFonts.lato(
+                              fontSize: 17.0,
+                              decoration: TextDecoration.underline,
+                              color: ThemeText.mainColor)),
+                    )),
               ),
               const Divider(
                 color: Color.fromARGB(255, 212, 209, 209),
@@ -82,9 +96,9 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.hours.toString(),
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.lato(fontSize: 17, wordSpacing: 2, color: Colors.black, fontStyle:  FontStyle.italic),
+                  style: TextStyle(fontSize: 17.0, fontStyle: FontStyle.italic),
                 ),
-              ), 
+              ),
               const Divider(
                 color: Color.fromARGB(255, 212, 209, 209),
                 height: 2.5,
@@ -93,11 +107,11 @@ class FoodDetails extends StatelessWidget {
                 endIndent: 0,
               ),
               Padding(
-                padding: const EdgeInsets.all(7.0),
+                padding: const EdgeInsets.all(6.0),
                 child: Text(
                   food.description,
                   textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(fontSize: 18, wordSpacing: 1, color: Colors.black),
+                  style: TextStyle(fontSize: 18.0),
                 ),
               ),
               const Divider(
@@ -112,10 +126,9 @@ class FoodDetails extends StatelessWidget {
                 child: Text(
                   food.foodOffered,
                   textAlign: TextAlign.left,
-                  style: GoogleFonts.lato(fontSize: 18, wordSpacing: 1, color: Colors.black),
+                  style: TextStyle(fontSize: 18.0),
                 ),
               ),
-              
             ],
           ),
         ),
@@ -123,4 +136,3 @@ class FoodDetails extends StatelessWidget {
     );
   }
 }
-        
