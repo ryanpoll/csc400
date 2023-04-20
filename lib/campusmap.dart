@@ -1,5 +1,4 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe, prefer_const_constructors
-import 'dart:async';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'styles.dart';
@@ -141,8 +140,6 @@ class _MapScreenState extends State<CampusMap> {
                                                             fullMarkerName);
                                                     if (selectedMarker !=
                                                         null) {
-                                                      // brings user back to view of map
-
                                                       // shows info window for the marker
                                                       _googleMapController
                                                           .showMarkerInfoWindow(
@@ -622,7 +619,6 @@ class _MapScreenState extends State<CampusMap> {
       _markers.add(Marker(
         markerId: m.markerId,
         position: m.position,
-        onTap: (() {}),
         infoWindow: InfoWindow(
             title: m.infoWindow,
             snippet: _snippet,
