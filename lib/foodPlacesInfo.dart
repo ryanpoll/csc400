@@ -75,7 +75,7 @@ List<FoodLocations> foodList = <FoodLocations>[
         "Southern runs on Dunkin'! Enjoy our full service Dunkin' serving all of your favorite food and beverage items and conveniently located in the Adanti Student Center.",
     foodOffered: " ",
     directions: true,
-    location: const LatLng(41.33232, 72.94856),
+    location: const LatLng(41.33232, -72.94856),
   ),
   FoodLocations(
       name: "Roberta's",
