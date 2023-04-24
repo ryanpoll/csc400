@@ -3,8 +3,6 @@
 
 import 'dart:collection';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:html/parser.dart' as parser;
-import 'package:http/http.dart' as http;
 
 class Event {
   final String title;
@@ -459,12 +457,14 @@ Map<DateTime, List<Event>> _kEventSource = {
     const Event(title: "Slime & Chill 8:00pm-9:30pm"),
   ],
   DateTime(2023, 5, 4): [
+    const Event(title: "Commuter Breakfast 8:30am-10:30am"),
     const Event(
         title: "Break The Silence: Suicide Prevention Walk 12:00pm-2:00pm"),
     const Event(title: "RHA Formal 6:00pm-7:45pm"),
   ],
   DateTime(2023, 5, 5): [
     const Event(title: "Certified User Training 10:00am-11:30am"),
+    const Event(title: "Alexina Cristante Senior Voice Recital 7:30pm"),
   ],
   DateTime(2023, 5, 6): [
     const Event(title: "Trail Clean-Up 10:00am-11:00am"),
@@ -475,11 +475,156 @@ Map<DateTime, List<Event>> _kEventSource = {
             "Spring last day of classes and last day to request a late course withdrawal from instructor"),
     const Event(title: "Senior Honors Convocation 2:00pm"),
   ],
-};
-
-Map<String, String> eventsInfo = {
-  "Seven Lenses: Documenting Black Culture":
-      "https://calendar.southernct.edu/event/23829-seven-lenses-documenting-black-culture",
-  "Women’s History Month: The Immigrant Experience":
-      "https://calendar.southernct.edu/event/25043-womens-history-month-the-immigrant-experience",
+  DateTime(2023, 5, 8): [
+    const Event(title: "Spring final exams begin"),
+  ],
+  DateTime(2023, 5, 10): [
+    const Event(title: "SCSU Education Job & Career Fair 2:00pm-4:00pm"),
+  ],
+  DateTime(2023, 5, 12): [
+    const Event(
+        title: "New Haven Symphony Orchestra: Price, Bonds & Hagan 7:30pm"),
+  ],
+  DateTime(2023, 5, 13): [
+    const Event(
+        title: "QPR (suicide prevention) Certification 11:00am-12:30pm"),
+  ],
+  DateTime(2023, 5, 14): [
+    const Event(title: "Spring final exams and semester ends"),
+  ],
+  DateTime(2023, 5, 16): [
+    const Event(title: "Mental Health First Aid 9:00am-4:15pm"),
+  ],
+  DateTime(2023, 5, 18): [
+    const Event(title: "Graduate Commencement"),
+  ],
+  DateTime(2023, 5, 19): [
+    const Event(title: "Spring final grades available to students by 5PM"),
+    const Event(title: "Undergraduate Commencement"),
+  ],
+  DateTime(2023, 5, 22): [
+    const Event(title: "Summer A classes begin"),
+  ],
+  DateTime(2023, 5, 24): [
+    const Event(
+        title:
+            "Summer A add/drop deadline for 5-6-week classes and 100% refund deadline"),
+  ],
+  DateTime(2023, 5, 27): [
+    const Event(
+        title:
+            "Summer A withdrawal from 5-6-week classes with 60% refund deadline"),
+  ],
+  DateTime(2023, 5, 28): [
+    const Event(
+        title:
+            "Summer A add/drop deadline for 12-week classes and 100% refund deadline"),
+    const Event(title: "Summer A pass-fail or audit grade option deadline"),
+  ],
+  DateTime(2023, 5, 29): [
+    const Event(title: "Holiday, No Classes"),
+  ],
+  DateTime(2023, 5, 30): [
+    const Event(
+        title:
+            "Summer A withdrawal from 5-6-week classes with 40% refund deadline"),
+  ],
+  DateTime(2023, 6, 2): [
+    const Event(
+        title: "New Haven Symphony Orchestra: Aretha: A Tribute 7:30pm"),
+  ],
+  DateTime(2023, 6, 4): [
+    const Event(
+        title:
+            "Summer A withdrawal from 12-week classes with 60% refund deadline"),
+  ],
+  DateTime(2023, 6, 18): [
+    const Event(
+        title:
+            "Summer A withdrawal from 12-week classes with 40% refund deadline"),
+  ],
+  DateTime(2023, 6, 19): [
+    const Event(
+        title:
+            "Summer A last day to withdraw from 5-6-week classes and receive 'W' grades"),
+    const Event(title: "Holiday, No Classes"),
+  ],
+  DateTime(2023, 6, 25): [
+    const Event(
+        title:
+            "Summer A classes end for 5-week session and last day to request a late course withdrawal from instructor"),
+  ],
+  DateTime(2023, 7, 2): [
+    const Event(
+        title:
+            "Summer A classes end 6-week session and last day to request a late course withdrawal from instructor"),
+  ],
+  DateTime(2023, 7, 4): [
+    const Event(title: "Holiday, No Classes"),
+  ],
+  DateTime(2023, 7, 5): [
+    const Event(title: "Summer B classes begin 5-6-week sessions"),
+  ],
+  DateTime(2023, 7, 7): [
+    const Event(
+        title:
+            "Summer B add/drop deadline for 5-6-week classes and 100% refund deadline"),
+    const Event(
+        title:
+            "Summer A final grades available to students for 5-6-week classes by 5PM"),
+  ],
+  DateTime(2023, 7, 10): [
+    const Event(
+        title:
+            "Summer B withdrawal from 5-6-week classes with 60% refund deadline"),
+  ],
+  DateTime(2023, 7, 11): [
+    const Event(
+        title:
+            "Summer B pass-fail or audit grade option deadline for 5-6-week classes"),
+  ],
+  DateTime(2023, 7, 13): [
+    const Event(
+        title:
+            "Summer B withdrawal from 5-6-week classes with 40% refund deadline"),
+  ],
+  DateTime(2023, 7, 14): [
+    const Event(title: "Financial Aid Enrollment Freeze"),
+  ],
+  DateTime(2023, 7, 16): [
+    const Event(
+        title:
+            "Summer A last day to withdraw from 12-week classes and receive 'W' grades"),
+  ],
+  DateTime(2023, 7, 26): [
+    const Event(title: "Summer B classes begin 3-week sessions"),
+  ],
+  DateTime(2023, 7, 28): [
+    const Event(
+        title:
+            "Summer B add/drop deadline for 3-week classes and 100% refund deadline"),
+  ],
+  DateTime(2023, 7, 31): [
+    const Event(
+        title:
+            "Summer B withdrawal from 3-week classes with 60% refund deadline"),
+  ],
+  DateTime(2023, 8, 1): [
+    const Event(
+        title:
+            "Summer B pass-fail or audit grade option deadline for 3-week classes"),
+  ],
+  DateTime(2023, 8, 3): [
+    const Event(
+        title:
+            "Summer B withdrawal from 3-week classes with 40% refund deadline"),
+    const Event(
+        title:
+            "Summer B last day to withdraw from 5-6-week classes and receive 'W' grades"),
+  ],
+  DateTime(2023, 8, 3): [
+    const Event(
+        title:
+            "Summer B withdrawal from 3-week classes with 40% refund deadline"),
+  ],
 };
