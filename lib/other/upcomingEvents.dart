@@ -26,6 +26,9 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
     super.initState();
 
     _selectedDay = _focusedDay;
+    print(_focusedDay.day);
+    print(_focusedDay.month);
+    print(_focusedDay.year);
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
   }
 
@@ -80,12 +83,28 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
     }
   }
 
+  String url = "";
+
+  getLink(DateTime date) {
+    String day = date.day.toString();
+    if (date.day < 10) {
+      day = "0$day";
+    }
+    String month = date.month.toString();
+    if (date.month < 10) {
+      month = "0$month";
+    }
+    String year = date.year.toString();
+    url = "https://calendar.southernct.edu/day/date/$year$month$day";
+    launch(url);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(221, 2, 18, 200),
-        title: Text('Events at SCSU', style: ThemeText.otherAppBars),
+        backgroundColor: ThemeText.mainColor,
+        title: const Text('Events at SCSU', style: ThemeText.otherAppBars),
       ),
       body: Column(
         children: [
@@ -134,10 +153,6 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: ListTile(
-                        onTap: (() {
-                          var tappedEvent = value[index];
-                          launch(eventsInfo[tappedEvent]);
-                        }),
                         title: Text(
                           '${value[index]}',
                           style: const TextStyle(
@@ -146,6 +161,9 @@ class _UpcomingEventsState extends State<UpcomingEvents> {
                               letterSpacing: 0.3,
                               fontSize: 17.5),
                         ),
+                        onTap: () {
+                          getLink(_focusedDay);
+                        },
                       ),
                     );
                   },
