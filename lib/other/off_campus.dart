@@ -69,7 +69,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: "At Cilantro Fresh Mexican Grill there is nothing to compare us to traditional 'fast food' other than the fact your food is made quickly while you wait. We use all fresh ingredients that are delivered daily to our door, all items are prepared in house while you wait."
     ),
     OffCampus(
-      name: 'CVS/Pharmacy',
+      name: 'CVS/Pharmacy: New Haven',
       position: LatLng(41.32937584901871, -72.96969346450801),
       phone: '203-389-4714',
       websiteUrl: 'https://www.cvs.com/',
@@ -78,7 +78,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: 'Drugstore chain selling a variety of beauty & health products, plus some grocery & household items.'
     ),
     OffCampus(
-      name: 'CVS/Pharmacy',
+      name: 'CVS/Pharmacy: Hamden',
       position: LatLng(41.367499219927296, -72.91964294380422),
       phone: '203-389-4714',
       websiteUrl: 'https://www.cvs.com/',
@@ -143,7 +143,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: 'Pizza Heaven 2 serves high quality food that is prepared by using fresh ingredients.'
     ),
     OffCampus(
-      name: 'Rite Aid',
+      name: 'Rite Aid: New Haven',
       position: LatLng(41.305245110634864, -72.92681989962924),
       phone: '203-777-7248',
       websiteUrl: 'https://www.riteaid.com/',
@@ -153,7 +153,7 @@ List<OffCampus> storeList = <OffCampus>[
     ),
     
     OffCampus(
-      name: 'Rite Aid',
+      name: 'Rite Aid: West Haven',
       position: LatLng(41.27875000123377, -72.9421954321582),
       phone: '203-933-5260',
       websiteUrl: 'https://www.riteaid.com/',
@@ -162,7 +162,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: 'Rite Aid pharmacy offers products and services to help you lead a healthy, happy life. Visit our online pharmacy, shop now, or find a store near you.'
     ),
     OffCampus(
-      name: 'Rite Aid',
+      name: 'Rite Aid: New Haven',
       position: LatLng(41.30895463387835, -72.89478664380532),
       phone: '203-777-0695',
       websiteUrl: 'https://www.riteaid.com/',
@@ -171,7 +171,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: 'Rite Aid pharmacy offers products and services to help you lead a healthy, happy life. Visit our online pharmacy, shop now, or find a store near you.'
     ),
     OffCampus(
-      name: 'Rite Aid',
+      name: 'Rite Aid: East Haven',
       position: LatLng(41.28332603756484, -72.882941730311521),
       phone: '203-469-7648',
       websiteUrl: 'https://www.riteaid.com/',
@@ -180,7 +180,7 @@ List<OffCampus> storeList = <OffCampus>[
       description: 'Rite Aid pharmacy offers products and services to help you lead a healthy, happy life. Visit our online pharmacy, shop now, or find a store near you.'
     ),
     OffCampus(
-      name: 'Rite Aid',
+      name: 'Rite Aid: Hamden',
       position: LatLng(41.37010612519117, -72.9181065168155),
       phone: '203-288-3895',
       websiteUrl: 'https://www.riteaid.com/',
