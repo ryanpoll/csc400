@@ -58,7 +58,7 @@ List<FoodLocations> foodList = <FoodLocations>[
       description:
           "At the Adanti Student Center you will find four retail dining destinations including a full service Dunkin', Tres Habaneros, SubConnection, The Grill, and Bowlful as well as an assortment of beverages, snack and grab and go options. Also located in the Adanti Student Center is our full service Dunkin'. ",
       foodOffered:
-          "Sub Connection:\r\n - SubConnection features 6” and 12” cold or toasted subs and wraps, prepared from high-quality meats and cheeses, garden-fresh produce and a variety of freshly baked breads, like Italian herb, cheese, wheat and white. SubConnection also offers a variety of freshly made garden salads, delicious soups and cookies. Every item is made to order, portions are always generous and sure to satisfy the heartiest of appetites.\r\nTres Habaneros \r\n-Serving authentic Mexican foods made from the freshest quality ingredients – including local fruits and vegetables, dairy products and naturally raised beef, pork and chicken, Tres Habaneros offers everything from burrito bowls to tacos to chips & house-made guacamole. These dishes are prepared right in front of you so you can customize to your liking.",
+          " ",
       directions: true,
       location: const LatLng(41.33176, -72.94879)),
   FoodLocations(
