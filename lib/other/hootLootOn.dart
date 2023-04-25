@@ -26,7 +26,7 @@ class HootLootOn extends StatelessWidget {
                 child: ListTile(
                   title: Text(store.name,
                       style: GoogleFonts.lato(
-                          fontSize: 16, wordSpacing: 1, color: Colors.black)),
+                          fontSize: 16, wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.w600)),
                   leading: Image.network(
                     store.imageUrl,
                     width: 85,
