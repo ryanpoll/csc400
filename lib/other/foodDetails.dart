@@ -107,26 +107,20 @@ class FoodDetails extends StatelessWidget {
                 endIndent: 0,
               ),
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   food.description,
                   textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 18.0),
+                  style: GoogleFonts.lato(fontSize: 19),
                 ),
               ),
-              const Divider(
-                color: Colors.grey,
-                height: 2.5,
-                thickness: 0.5,
-                indent: 0,
-                endIndent: 0,
-              ),
+              
               Padding(
-                padding: const EdgeInsets.all(6.0),
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
                   food.foodOffered,
                   textAlign: TextAlign.left,
-                  style: TextStyle(fontSize: 18.0),
+                  style: GoogleFonts.lato(fontSize: 19),
                 ),
               ),
             ],
