@@ -3,13 +3,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import './transportation.dart';
-import './campusmap.dart';
-import './food.dart';
-import './hootloot.dart';
-import './parking.dart';
-import './other.dart';
-import './styles.dart';
+import 'other/transportation.dart';
+import 'other/campusmap.dart';
+import 'other/food.dart';
+import 'other/hootloot.dart';
+import 'other/parking.dart';
+import 'other/other.dart';
+import 'other/styles.dart';
 
 // main function calls runApp() which takes a widget as argument
 // to create the layout
