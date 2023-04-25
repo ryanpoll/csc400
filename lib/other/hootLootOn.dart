@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/parking.dart';
+import 'parking.dart';
 import 'styles.dart';
 import 'on_campus.dart';
 import 'store_details_on.dart';
@@ -26,7 +26,7 @@ class HootLootOn extends StatelessWidget {
               OnCampus store = storeList[index];
               return Card(
                 child: ListTile(
-                  title: Text(store.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black)),
+                  title: Text(store.name, style: GoogleFonts.lato(fontSize: 16, fontWeight: FontWeight.w600, wordSpacing: 1, color: Colors.black,)),
                   leading: Image.network(store.imageUrl),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
