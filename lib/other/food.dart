@@ -23,7 +23,7 @@ class Food extends StatelessWidget {
               FoodLocations food = foodList[index];
               return Card(
                 child: ListTile(
-                  title: Text(food.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black)),
+                  title: Text(food.name, style: GoogleFonts.lato(fontSize: 16, wordSpacing: 1, color: Colors.black, fontWeight: FontWeight.w600)),
                   trailing: Icon(Icons.arrow_forward_rounded),
                   onTap: () {
                     Navigator.push(
