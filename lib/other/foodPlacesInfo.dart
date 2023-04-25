@@ -75,7 +75,7 @@ List<FoodLocations> foodList = <FoodLocations>[
         "Southern runs on Dunkin'! Enjoy our full service Dunkin' serving all of your favorite food and beverage items and conveniently located in the Adanti Student Center.",
     foodOffered: " ",
     directions: true,
-    location: const LatLng(41.33232, -72.94856),
+    location: const LatLng(41.33232, 72.94856),
   ),
   FoodLocations(
       name: "Roberta's",
@@ -94,31 +94,29 @@ List<FoodLocations> foodList = <FoodLocations>[
       location: const LatLng(41.338938, -72.945836)),
   FoodLocations(
       name: "Bagel Wagon",
-      address: 'North Campus Hall',
+      address: 'Engleman Hall',
       phone: '(203) 392-7278',
       hours:
           'Monday-Thursday,Sunday: \r\n 3:00PM-10:00pm \r\n Friday-Saturday: \r\n Closed',
       text: 'Click here to get directions',
       menuURL: 'https://southernct.sodexomyway.com/dining-near-me/bagel_wagon',
       imageUrl:
-          'https://www.southernct.edu/sites/default/files/2018-08/SCSU_16_north_campus_market-0183.jpg',
+          'https://content-service.sodexomyway.com/media/coffeebagel_tcm1054-23666_w1920_h976.jpg?url=https://southernct.sodexomyway.com/',
       description:
-          "Located in North Campus Hall, Roberta's is an on-campus convenience store offering a wide assortment of snacks, groceries, toileties and more!",
+          "This bagels-and-more location is a prime spot for students, faculty, staff and guests to fuel up with a tasty breakfast or lunch. From the namesake bagels with a variety of sweet and savory cream cheese options, to lunch options, including wraps, soups and vegetarian and vegan dishes, and ‘We Proudly Serve’ Starbucks coffee, this diverse and appealing menu is sure to deliver brain food for Southern’s most powerful minds!",
       foodOffered: " ",
       directions: true,
       location: const LatLng(41.332344, -72.946643)),
   FoodLocations(
       name: "Owl Perch",
-      address: 'North Campus Hall',
+      address: 'Buley Library',
       phone: '(203) 392-7278',
       hours:
           'Monday-Thursday,Sunday: \r\n 3:00PM-10:00pm \r\n Friday-Saturday: \r\n Closed',
       text: 'Click here to get directions',
       menuURL: 'https://southernct.sodexomyway.com/dining-near-me/owl_perch',
-      imageUrl:
-          'https://www.southernct.edu/sites/default/files/2018-08/SCSU_16_north_campus_market-0183.jpg',
-      description:
-          "Located in North Campus Hall, Roberta's is an on-campus convenience store offering a wide assortment of snacks, groceries, toileties and more!",
+      imageUrl:'http://crescentmagazine.org/wp-content/uploads/2019/04/pell_020119_owlperch-750x541.jpg',
+      description:"Proudly serving Starbucks coffee, a variety of bottled beverages and snacks as well as our fresh made Simply to Go line of sandwiches, salads, fruit cups and more. Located in the library, Owl Perch is a convenient spot to refuel. ",
       foodOffered: " ",
       directions: true,
       location: const LatLng(41.333209, -72.948075)),
