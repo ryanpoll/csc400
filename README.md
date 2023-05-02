@@ -27,7 +27,7 @@
 	4) Once you choose a phone, it will ask you to select a system image, we used R.
 	5) Click Next and then Finish.
 	
-	You can also find steps here https://www.kindacode.com/article/how-	to-create-a-new-android-emulator/.
+	You can also find steps here https://www.kindacode.com/article/how-to-create-a-new-android-emulator/.
 
 9) Go back to Visual Studio code and at the bottom right of the window, select the device you would like to run the application on. The mobile emulator you created should appear.
 
