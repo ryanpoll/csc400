@@ -39,7 +39,23 @@
 
 To download application on iPhone, you can follow these steps:
 
-1.Connect your iPhone to your computer with 
+1) Connect your iPhone to your computer using USB cable
+
+2) Open Xcode on your computer
+
+3) In Xcode, click on "Window" from the top menu and select "Devices and Simulators." 
+
+4) In the Devices and Simulators window, select your iPhone from the list on the left-hand side.
+
+5) Click on the "Install App" button in the bottom-right corner of the window.
+
+6) Navigate to the location where your Flutter app's iOS build file is located (usually in the "ios" folder of your app's project directory).
+
+7) Select the iOS build file and click "Open."
+
+8) The app should now be installed on your iPhone.
+
+Note: Before installing the app on your iPhone, you may need to have an Apple Developer account and have your device registered as a test device. If you don't have a developer account or are not sure if your device is registered, you can refer to Apple's documentation for more information.
 
 
 
