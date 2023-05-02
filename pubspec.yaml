@@ -39,6 +39,9 @@ dependencies:
   dio: ^4.0.0
   flutter_polyline_points: ^0.2.6
   google_maps_flutter: ^2.0.2
+  draw_graph: ^1.0.0
+  google_fonts: ^4.0.3
+  html: ^0.15.2
 
 dev_dependencies:
   flutter_test:
