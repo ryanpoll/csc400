@@ -37,6 +37,10 @@
 	
 
 
+To download application on iPhone, you can follow these steps:
+
+1.Connect your iPhone to your computer with 
+
 
 
 
