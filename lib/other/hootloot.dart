@@ -1,8 +1,8 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/hootLootOn.dart';
-import 'package:flutter_application_1/hootLootOff.dart';
+import 'hootLootOn.dart';
+import 'hootLootOff.dart';
 import 'styles.dart';
 import 'package:google_fonts/google_fonts.dart';
 
