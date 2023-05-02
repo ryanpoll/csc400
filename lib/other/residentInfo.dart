@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/res_details.dart';
+import 'res_details.dart';
 import 'styles.dart';
 import 'halls.dart';
 import 'res_details.dart';
