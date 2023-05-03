@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/other/styles.dart';
 import 'styles.dart';
 import 'parking_model.dart';
-import 'package:draw_graph/draw_graph.dart';
-import 'package:draw_graph/models/feature.dart';
 
 class ParkingDetail extends StatelessWidget {
   final ParkingDataModel parkingDataModel;
