@@ -1,13 +1,7 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 import 'styles.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'parking_model.dart';
 import 'parking_details.dart';
-import 'package:draw_graph/draw_graph.dart';
-import 'package:draw_graph/models/feature.dart';
-import 'package:flutter/material.dart';
 
 class Parking extends StatefulWidget {
   const Parking({super.key});
